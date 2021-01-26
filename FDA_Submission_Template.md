@@ -107,13 +107,20 @@ Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
 
 **Description of Training Dataset:** 
 
+There is a total of 112,120 scans.  We split this into a training and validation set with an 80/20 split
+and stratify on the pneumonia class.  The fraction of cases of pneumonia is then 0.0127 for both training and validation
+data.  We know that we want our model to be trained on a set that has _equal_ proportions of pneumonia and no pneumonia, so we throw away some data.
+
+We end up with 89,696 training scans.
 
 **Description of Validation Dataset:** 
+
+The percentage patients with pneumonia in our data is 1%.  Thus, we want to have 1% of pneumonia cases in the validation set.  The validation set ends up with 224 scans of patients with pneumonia and 22,138 scans without pneumoniua. 
 
 
 ### 5. Ground Truth
 
-
+The data is obtained from the NIH Chest X-ray Dataset.  The consensus labels of three U.S. board-certified radiologists (the majority of votes of three radiologists) were used as the reference standard of "ground truth".
 
 ### 6. FDA Validation Plan
 
