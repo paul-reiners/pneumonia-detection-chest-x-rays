@@ -28,7 +28,7 @@ Reduces time of verification of pneumonia diagnoses.
 
 << Insert Algorithm Flowchart >>
 
-![Algorithm Flowchart](../img/flow-chart.png)
+![Algorithm Flowchart](./img/flow-chart.png)
 
 **DICOM Checking Steps:**
 
@@ -95,7 +95,7 @@ Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
 
 
 << Insert algorithm training performance visualization >> 
-![Algorithm performance](../img/algorithm-performance.png)
+![Algorithm performance](./img/algorithm-performance.png)
 
 << Insert P-R curve >>
 ![P-R curve](../img/precision-recall-curve.png)
