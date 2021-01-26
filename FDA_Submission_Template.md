@@ -98,7 +98,7 @@ Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
 ![Algorithm performance](./img/algorithm-performance.png)
 
 << Insert P-R curve >>
-![P-R curve](../img/precision-recall-curve.png)
+![P-R curve](./img/precision-recall-curve.png)
 
 **Final Threshold and Explanation:**
 
