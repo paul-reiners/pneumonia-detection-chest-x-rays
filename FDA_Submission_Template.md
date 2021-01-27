@@ -111,7 +111,9 @@ There is a total of 112,120 scans.  We split this into a training and validation
 and stratify on the pneumonia class.  The fraction of cases of pneumonia is then 0.0127 for both training and validation
 data.  We know that we want our model to be trained on a set that has _equal_ proportions of pneumonia and no pneumonia, so we throw away some data.
 
-We end up with 89,696 training scans.
+We end up with 89,696 training scans.  Below is an example scan:
+
+![scan](./img/scan.png)
 
 **Description of Validation Dataset:** 
 
@@ -126,6 +128,12 @@ The data is obtained from the NIH Chest X-ray Dataset.  The consensus labels of 
 
 **Patient Population Description for FDA Validation Dataset:**
 
+The age range of the patient population was 0 (baby) to 94.  There were slightly more males than females in the population.
+
 **Ground Truth Acquisition Methodology:**
 
+The consensus labels of three U.S. board-certified radiologists (the majority of votes of three radiologists) were used as the reference standard of "ground truth".
+
 **Algorithm Performance Standard:**
+
+F1 Score is: 0.03076923076923077
