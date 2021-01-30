@@ -10,11 +10,11 @@
 
 **Intended Use Statement:** 
 
-This algorithm is intended for use on males and females of all ages and races who have been administered a chest X-ray.
+This algorithm helps doctors to diagnose pneumonia from chest X-rays of patients.
 
 **Indications for Use:**
 
-Pneumonia is suspected in a patient.
+Pneumonia is suspected in a patient.  This algorithm can be used on males and females of all ages and races who have been administered a chest X-ray.
 
 **Device Limitations:**
 
@@ -71,7 +71,6 @@ Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
 ### 3. Algorithm Training
 
 **Parameters:**
-
 * Types of augmentation used during training
     * horizontal_flip = True 
     * vertical_flip = False 
@@ -95,8 +94,10 @@ Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
     * dense_8 (Dense)       
 
 
+<< Insert algorithm training performance visualization >> 
 ![Algorithm performance](./img/algorithm-performance.png)
 
+<< Insert P-R curve >>
 ![P-R curve](./img/precision-recall-curve.png)
 
 **Final Threshold and Explanation:**
