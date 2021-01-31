@@ -28,33 +28,6 @@ Reduces time of verification of pneumonia diagnoses.  Runtime is well under a se
 
 ![Algorithm Flowchart](./img/flow-chart.png)
 
-The architecture of the CNN used in the algorithm is:
-
-    _________________________________________________________________
-    Layer (type)                 Output Shape              Param #   
-    =================================================================
-    model_1 (Model)              (None, 7, 7, 512)         14714688  
-    _________________________________________________________________
-    flatten_1 (Flatten)          (None, 25088)             0         
-    _________________________________________________________________
-    dropout_1 (Dropout)          (None, 25088)             0         
-    _________________________________________________________________
-    dense_1 (Dense)              (None, 1024)              25691136  
-    _________________________________________________________________
-    dropout_2 (Dropout)          (None, 1024)              0         
-    _________________________________________________________________
-    dense_2 (Dense)              (None, 512)               524800    
-    _________________________________________________________________
-    dropout_3 (Dropout)          (None, 512)               0         
-    _________________________________________________________________
-    dense_3 (Dense)              (None, 256)               131328    
-    _________________________________________________________________
-    dense_4 (Dense)              (None, 1)                 257       
-    =================================================================
-    Total params: 41,062,209
-    Trainable params: 28,707,329
-    Non-trainable params: 12,354,880
-
 **DICOM Checking Steps:**
 
 Exploratory data analysis was used to spot-check the DICOM images.  We also check the following for each DICOM file:
@@ -100,6 +73,7 @@ Pixel intensity was normalized.  We also did some augmentation of the training d
 ### 3. Algorithm Training
 
 **Parameters:**
+
 * Types of augmentation used during training
     * horizontal_flip = True 
     * vertical_flip = False 
@@ -130,6 +104,8 @@ We can see that the training loss decreased over the epochs, while the validatio
 ![P-R curve](./img/precision-recall-curve.png)
 
 **Final Threshold and Explanation:**
+
+We used a final threshold of 0.46.  This is where the F1-score was maximized.
 
 ### 4. Databases
 
