@@ -14,11 +14,11 @@ This algorithm helps doctors to diagnose pneumonia from chest X-rays of patients
 
 **Indications for Use:**
 
-Pneumonia is suspected in a patient.  This algorithm has been tested on and can be used on males and females of all ages who have been administered a chest X-ray.
+Pneumonia is suspected in a patient.  This algorithm has been tested on and can be used on males and females of all ages who have been administered a chest X-ray.  It can be used for emergency workflow re-prioritization.
 
 **Device Limitations:**
 
-The program must run on a GPU-enabled workspace.  The algorithm should not be used for patients over the age of 80 as it has not been trained or tested on such patients.
+The program must run on a GPU-enabled workspace either locally or, more likely, in the cloud.  The algorithm should not be used for patients over the age of 80 as it has not been trained or tested on such patients.
 
 **Clinical Impact of Performance:**
 
@@ -26,17 +26,46 @@ Reduces time of verification of pneumonia diagnoses.  Runtime is well under a se
 
 ### 2. Algorithm Design and Function
 
-<< Insert Algorithm Flowchart >>
-
 ![Algorithm Flowchart](./img/flow-chart.png)
+
+The architecture of the CNN used in the algorithm is:
+
+    _________________________________________________________________
+    Layer (type)                 Output Shape              Param #   
+    =================================================================
+    model_1 (Model)              (None, 7, 7, 512)         14714688  
+    _________________________________________________________________
+    flatten_1 (Flatten)          (None, 25088)             0         
+    _________________________________________________________________
+    dropout_1 (Dropout)          (None, 25088)             0         
+    _________________________________________________________________
+    dense_1 (Dense)              (None, 1024)              25691136  
+    _________________________________________________________________
+    dropout_2 (Dropout)          (None, 1024)              0         
+    _________________________________________________________________
+    dense_2 (Dense)              (None, 512)               524800    
+    _________________________________________________________________
+    dropout_3 (Dropout)          (None, 512)               0         
+    _________________________________________________________________
+    dense_3 (Dense)              (None, 256)               131328    
+    _________________________________________________________________
+    dense_4 (Dense)              (None, 1)                 257       
+    =================================================================
+    Total params: 41,062,209
+    Trainable params: 28,707,329
+    Non-trainable params: 12,354,880
 
 **DICOM Checking Steps:**
 
-Exploratory data analysis was used to spot-check the DICOM images.
+Exploratory data analysis was used to spot-check the DICOM images.  We also check the following for each DICOM file:
+
+* body part examined is 'CHEST' 
+* modality is 'DX' 
+* patient position is either 'AP' or 'PA'
 
 **Preprocessing Steps:**
 
-Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
+Pixel intensity was normalized.  We also did some augmentation of the training data.
 
 **CNN Architecture:**
 
@@ -94,16 +123,15 @@ Pixel intensity was normalized to a mean of 0 and a standard deviation of 1.0.
     * dense_8 (Dense)       
 
 
-<< Insert algorithm training performance visualization >> 
 ![Algorithm performance](./img/algorithm-performance.png)
 
-<< Insert P-R curve >>
+We can see that the training loss decreased over the epochs, while the validation loss tended to go up with some spikes.
+
 ![P-R curve](./img/precision-recall-curve.png)
 
 **Final Threshold and Explanation:**
 
 ### 4. Databases
- (For the below, include visualizations as they are useful and relevant)
 
 **Description of Training Dataset:** 
 
@@ -136,4 +164,9 @@ The consensus labels of three U.S. board-certified radiologists (the majority of
 
 **Algorithm Performance Standard:**
 
-F1 Score is: 0.03076923076923077
+F1 Score is 0.40.  The confusion matrix is
+
+    [[75 26]
+     [14 13]]
+     
+There were 128 validation cases.  Out of these, 26 were false positives and 14 were false negatives.  The false positives are less worrisome than the false negatives, because it is better to err on the side of caution.  At any rate, all findings of the algorithm should be verified by a board-certified radiologist.
