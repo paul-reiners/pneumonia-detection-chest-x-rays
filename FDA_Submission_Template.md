@@ -14,15 +14,15 @@ This algorithm helps doctors to diagnose pneumonia from chest X-rays of patients
 
 **Indications for Use:**
 
-Pneumonia is suspected in a patient.  This algorithm can be used on males and females of all ages and races who have been administered a chest X-ray.
+Pneumonia is suspected in a patient.  This algorithm has been tested on and can be used on males and females of all ages who have been administered a chest X-ray.
 
 **Device Limitations:**
 
-The program must run on a GPU-enabled workspace.
+The program must run on a GPU-enabled workspace.  The algorithm should not be used for patients over the age of 80 as it has not been trained or tested on such patients.
 
 **Clinical Impact of Performance:**
 
-Reduces time of verification of pneumonia diagnoses.
+Reduces time of verification of pneumonia diagnoses.  Runtime is well under a second per diagnosis.  Thus, the CNN is much faster than human doctors.
 
 ### 2. Algorithm Design and Function
 
