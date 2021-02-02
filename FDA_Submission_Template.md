@@ -148,3 +148,11 @@ F1 Score is 0.40.  The confusion matrix is
      [14 13]]
      
 There were 128 validation cases.  Out of these, 26 were false positives and 14 were false negatives.  The false positives are less worrisome than the false negatives, because it is better to err on the side of caution.  At any rate, all findings of the algorithm should be verified by a board-certified radiologist.
+
+![FN versus FP](./img/f-beta.jpeg)
+
+To see whether we can drive down the frequency of false negatives, we will try using an F-beta score. To minimize the number of false negatives, we need to maximize recall.
+
+![Threshold versus F-beta-score](./img/threshold_versus_f_beta_score.png)
+
+By lowering the threshold to 0.31313131313131315, we can decrease the number of false negatives to only 3.
