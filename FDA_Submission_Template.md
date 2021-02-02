@@ -105,7 +105,9 @@ We can see that the training loss decreased over the epochs, while the validatio
 
 **Final Threshold and Explanation:**
 
-We used a final threshold of 0.46.  This is where the F1-score was maximized.
+![Threshold versus F1-score](./img/threshold_versus_f1_score.png)
+
+We used a classification threshold of 0.4646464646464647.
 
 ### 4. Databases
 
