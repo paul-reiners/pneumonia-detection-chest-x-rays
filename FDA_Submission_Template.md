@@ -14,7 +14,7 @@ This algorithm helps doctors to diagnose pneumonia from chest X-rays of patients
 
 **Indications for Use:**
 
-Pneumonia is suspected in a patient.  This algorithm has been tested on and can be used on males and females of all ages who have been administered a chest X-ray.  It can be used for emergency workflow re-prioritization.
+Pneumonia is suspected in a patient.  This algorithm has been tested on and can be used on people of all ages who have been administered a chest X-ray.  It can be used for emergency workflow re-prioritization.
 
 **Device Limitations:**
 
@@ -123,8 +123,17 @@ We end up with 89,696 training scans.  Below is an example scan:
 
 **Description of Validation Dataset:** 
 
-The percentage patients with pneumonia in our data is 1%.  Thus, we want to have 1% of pneumonia cases in the validation set.  The validation set ends up with 224 scans of patients with pneumonia and 22,138 scans without pneumoniua. 
+We construct 20%/80% split of pneumonia/non-pneumonia cases in the validation set.  
 
+    pneumonia count:      286
+    non-pneumonia count: 1144
+    pneumonia %:           20
+    
+We also want the following to be true of the scans:
+
+* body part examined is 'CHEST' 
+* modality is 'DX' 
+* patient position is either 'AP' or 'PA'
 
 ### 5. Ground Truth
 
@@ -141,6 +150,8 @@ The age range of the patient population was 0 (baby) to 94.  There were slightly
 The consensus labels of three U.S. board-certified radiologists (the majority of votes of three radiologists) were used as the reference standard of "ground truth".
 
 **Algorithm Performance Standard:**
+
+Minimum acceptable F1-score should be 0.387 because I found in the [CheXNet paper](https://stanfordmlgroup.github.io/projects/chexnet/) that that is the average radiologist F1-score.
 
 F1 Score is 0.40.  The confusion matrix is
 
