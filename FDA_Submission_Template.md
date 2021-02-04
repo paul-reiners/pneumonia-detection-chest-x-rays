@@ -10,7 +10,7 @@
 
 **Intended Use Statement:** 
 
-This algorithm helps doctors to diagnose pneumonia from chest X-rays of patients.
+This algorithm helps doctors to diagnose pneumonia from chest X-rays of patients.  Depending on the threshold setting for classification, it can be used either for screening or for accurate diagnosis.  A higher threshold of around 0.46 should be used for screening.  A lower threshold of 0.31 should be used for diagnosis where false negatives must be minimized. 
 
 **Indications for Use:**
 
@@ -128,12 +128,6 @@ We construct 20%/80% split of pneumonia/non-pneumonia cases in the validation se
     pneumonia count:      286
     non-pneumonia count: 1144
     pneumonia %:           20
-    
-We also want the following to be true of the scans:
-
-* body part examined is 'CHEST' 
-* modality is 'DX' 
-* patient position is either 'AP' or 'PA'
 
 ### 5. Ground Truth
 
@@ -142,8 +136,15 @@ The data is obtained from the NIH Chest X-ray Dataset.  The consensus labels of 
 ### 6. FDA Validation Plan
 
 **Patient Population Description for FDA Validation Dataset:**
+    
+The ideal data set to receive from a clinical partner for FDA validation would meet the following requirements:
 
-The age range of the patient population was 0 (baby) to 94.  There were slightly more males than females in the population.
+* body part examined: 'CHEST' 
+* modality: 'DX' 
+* patient position: 'AP' or 'PA'
+* age range: 0 to 80 years
+* gender distribution: balanced
+* prevalence of pneumonia (and other diseases): 20%
 
 **Ground Truth Acquisition Methodology:**
 
